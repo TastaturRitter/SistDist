@@ -54,7 +54,7 @@ def guardar_mensajes():
     while True:
         if mensajes_para_guardar:
             mensaje_para_guardar = mensajes_para_guardar.pop(0)
-            with open("\n logMensajes.txt", "a") as log_file:
+            with open("logMensajes.txt", "a") as log_file:
                 log_file.write(mensaje_para_guardar + "\n")
             time.sleep(1)
 
