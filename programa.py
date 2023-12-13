@@ -34,7 +34,7 @@ def recibir_mensajes():
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             mensaje_completo = f"\n {timestamp} - Mensaje RECIBIDO de {direccion}: {mensaje_decodificado}"
             mensajes_para_guardar.append(mensaje_completo)
-            print("mensaje guardado: ", mensaje_completo)
+            #print("\n mensaje guardado: ", mensaje_completo)
             
             if not mensaje_confirmado:
                 # Enviar un mensaje de confirmación al remitente
