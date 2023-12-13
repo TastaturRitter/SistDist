@@ -47,13 +47,18 @@ def guardar_mensajes():
 
 def enviar_mensajes():
     while True:
+        # Solicitar la dirección IP solo una vez antes del bucle del mensaje
+        destino_ip = input("\n Ingrese la dirección IP de destino (o presione Enter para usar la última): ")
+        if not destino_ip:
+            continue
+
         # Validar la dirección IP
         while True:
-            destino_ip = input("\n Ingrese la dirección IP de destino: ")
             if destino_ip.count('.') == 3 and all(0 <= int(num) < 256 for num in destino_ip.rstrip().split('.')):
                 break
             else:
                 print("\n Dirección IP no válida. Ingrese una dirección IP válida.")
+                destino_ip = input("\n Ingrese la dirección IP de destino: ")
 
         # Validar el mensaje
         mensaje = input("\n Ingrese su mensaje: ")
