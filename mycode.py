@@ -32,7 +32,7 @@ def recibir_mensajes():
             if not mensaje_confirmado:
                 confirmacion = "\n Confirmo la recepcion de tu mensaje"
                 s.sendto(confirmacion.encode('utf-8'), direccion)
-                print(mensaje_completo)
+                print(f"\n Confirmación enviada a {direccion}")
                 mensaje_confirmado = True
         except socket.timeout:
             mensaje_confirmado = False
@@ -46,11 +46,13 @@ def guardar_mensajes():
             time.sleep(1)
 
 def enviar_mensajes():
+    ultima_destino_ip = ""
+    
     while True:
         # Solicitar la dirección IP solo una vez antes del bucle del mensaje
-        destino_ip = input("\n Ingrese la dirección IP de destino (o presione Enter para usar la última): ")
+        destino_ip = input(f"\n Ingrese la dirección IP de destino (o presione Enter para usar la última: {ultima_destino_ip}): ")
         if not destino_ip:
-            continue
+            destino_ip = ultima_destino_ip
 
         # Validar la dirección IP
         while True:
@@ -59,6 +61,9 @@ def enviar_mensajes():
             else:
                 print("\n Dirección IP no válida. Ingrese una dirección IP válida.")
                 destino_ip = input("\n Ingrese la dirección IP de destino: ")
+
+        # Actualizar la última dirección IP utilizada
+        ultima_destino_ip = destino_ip
 
         # Validar el mensaje
         mensaje = input("\n Ingrese su mensaje: ")
